@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+
+class Menu extends StatelessWidget {
+  var listMenu = ['Dashboard', 'Scenarios', 'Appareils'];
+  @override
+  Widget _buildRow(String Word) {
+    return ListTile(
+        title: Text(
+      listMenu[0],
+      style: TextStyle(fontSize: 18.0),
+    ));
+  }
+
+  Widget _buildListMenu() {
+
+    return Column(
+      children: [
+        _menuTile(listMenu[0]),
+        _menuTile(listMenu[1]),
+        _menuTile(listMenu[2])
+      ],
+    );
+  }
+
+  Widget _menuTile(String nom) {
+    return Container(
+      margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
+      padding:
+          const EdgeInsets.only(top: 5.0, left: 15.5, right: 15.5, bottom: 5.0),
+      child: Text(nom,
+          style: TextStyle(
+            fontSize: 10.0,
+          )),
+    );
+  }
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Menu'),
+      ),
+      body: _buildListMenu(),
+    );
+  }
+}
