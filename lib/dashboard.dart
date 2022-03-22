@@ -14,6 +14,7 @@ class DashboardState extends State<Dashboard> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      //Page
       appBar: AppBar(
         title: Text(_deviceName),
         leading: GestureDetector(
@@ -28,10 +29,14 @@ class DashboardState extends State<Dashboard> {
           ),
         ),
       ),
+
       body: Row(
+        //Ligne du dashboard
         children: [
           Column(children: [
+            //1ere colonne : Valeur actuelle
             Container(
+              //Container "titre"
               margin: const EdgeInsets.only(top: 30, right: 30, left: 80),
               padding: const EdgeInsets.only(
                   top: 5.0, left: 31.5, right: 31.5, bottom: 5.0),
@@ -43,6 +48,7 @@ class DashboardState extends State<Dashboard> {
                   )),
             ),
             Container(
+                //Container avec val
                 margin: const EdgeInsets.only(bottom: 5, right: 30, left: 80),
                 padding: const EdgeInsets.all(5.0),
                 decoration:
@@ -51,55 +57,32 @@ class DashboardState extends State<Dashboard> {
                     style:
                         TextStyle(fontSize: 50, fontWeight: FontWeight.bold))),
             Container(
-                margin: const EdgeInsets.only(bottom: 30, right: 30, left: 80),
-                padding: const EdgeInsets.all(5.0),
-                child: Row(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        color: Colors.blueAccent,
-                        border: Border.all(color: Colors.blueAccent),
-                        borderRadius: BorderRadius.all(Radius.circular(40)),
-                      ),
-                      width: MediaQuery.of(context).size.height * 0.07,
-                      height: MediaQuery.of(context).size.height * 0.07,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "+1",
-                          style: TextStyle(
-                              fontSize: 25,
-                              fontFamily: 'Amatic',
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(
-                        color: Colors.blueAccent,
-                        border: Border.all(color: Colors.blueAccent),
-                        borderRadius: BorderRadius.all(Radius.circular(40)),
-                      ),
-                      width: MediaQuery.of(context).size.height * 0.07,
-                      height: MediaQuery.of(context).size.height * 0.07,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "-1",
-                          style: TextStyle(
-                              fontSize: 25,
-                              fontFamily: 'Amatic',
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    )
-                  ],
-                ))
+              //Container bouton vlaidation prchaine valeur
+              margin: const EdgeInsets.only(bottom: 30, right: 30, left: 80),
+              padding: const EdgeInsets.all(5.0),
+              decoration: BoxDecoration(
+                color: Colors.blueAccent,
+                border: Border.all(color: Colors.blueAccent),
+                borderRadius: BorderRadius.all(Radius.circular(13)),
+              ),
+              width: 170, //MediaQuery.of(context).size.height * 0.50,
+              height: 50,
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "Passer à la prochaine valeur",
+                  style: TextStyle(
+                      fontSize: 10,
+                      fontFamily: 'Amatic',
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
           ]),
           Column(children: [
+            //2eme colonne : prochaine val
             Container(
+              //Container 'titre'
               margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
               padding: const EdgeInsets.only(
                   top: 5.0, left: 15.5, right: 15.5, bottom: 5.0),
@@ -111,13 +94,64 @@ class DashboardState extends State<Dashboard> {
                   )),
             ),
             Container(
-                margin: const EdgeInsets.only(bottom: 30, left: 30, right: 30),
+                //Container val
+                margin: const EdgeInsets.only(bottom: 10, left: 30, right: 30),
                 padding: const EdgeInsets.all(5.0),
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.blueAccent)),
                 child: Text(sprintf("%04.1f %", [_nextValue]),
                     style:
                         TextStyle(fontSize: 30, fontWeight: FontWeight.bold))),
+            Container(
+                //Container boutons
+                margin: const EdgeInsets.only(bottom: 30, right: 30, left: 30),
+                padding: const EdgeInsets.all(5.0),
+                child: Row(
+                  children: [
+                    Container(
+                      //Bouton +1
+                      margin: const EdgeInsets.only(right: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.blueAccent,
+                        border: Border.all(color: Colors.blueAccent),
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                      ),
+                      width: MediaQuery.of(context).size.height * 0.05,
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "+1",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'Amatic',
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      //Bouton -1
+                      margin: const EdgeInsets.only(left: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.blueAccent,
+                        border: Border.all(color: Colors.blueAccent),
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                      ),
+                      width: MediaQuery.of(context).size.height * 0.05,
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "-1",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'Amatic',
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    )
+                  ],
+                ))
           ])
         ],
       ),
