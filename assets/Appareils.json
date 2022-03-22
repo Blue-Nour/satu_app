@@ -1,6 +1,3 @@
-{
-    "devices":
-        [{"id": 1,"name":"satu1","category":"saturometre","IP":"123.124.123.124"},
-        {"id": 2,"name":"satu2","category":"saturometre","IP":"123.125.123.124"}],
-    "scenarios":""
-}
+        [{"id": 1,"name":"satu1","category":"saturometre","ip":"123.124.123.124"},
+        {"id": 2,"name":"satu2","category":"saturometre","ip":"123.125.123.124"},
+        {"id": 2,"name":"satu3","category":"saturometre","ip":"123.145.123.124"}]

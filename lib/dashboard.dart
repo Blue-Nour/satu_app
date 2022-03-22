@@ -11,6 +11,7 @@ class DashboardState extends State<Dashboard> {
   var _instValue = 20.0;
   var _nextValue = 10.0;
   var _deviceName = 'Saturometre';
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -42,13 +43,60 @@ class DashboardState extends State<Dashboard> {
                   )),
             ),
             Container(
-                margin: const EdgeInsets.only(bottom: 30, right: 30, left: 80),
+                margin: const EdgeInsets.only(bottom: 5, right: 30, left: 80),
                 padding: const EdgeInsets.all(5.0),
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.blueAccent)),
                 child: Text(sprintf("%04.1f %", [_instValue]),
                     style:
                         TextStyle(fontSize: 50, fontWeight: FontWeight.bold))),
+            Container(
+                margin: const EdgeInsets.only(bottom: 30, right: 30, left: 80),
+                padding: const EdgeInsets.all(5.0),
+                child: Row(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(right: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.blueAccent,
+                        border: Border.all(color: Colors.blueAccent),
+                        borderRadius: BorderRadius.all(Radius.circular(40)),
+                      ),
+                      width: MediaQuery.of(context).size.height * 0.07,
+                      height: MediaQuery.of(context).size.height * 0.07,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "+1",
+                          style: TextStyle(
+                              fontSize: 25,
+                              fontFamily: 'Amatic',
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.blueAccent,
+                        border: Border.all(color: Colors.blueAccent),
+                        borderRadius: BorderRadius.all(Radius.circular(40)),
+                      ),
+                      width: MediaQuery.of(context).size.height * 0.07,
+                      height: MediaQuery.of(context).size.height * 0.07,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "-1",
+                          style: TextStyle(
+                              fontSize: 25,
+                              fontFamily: 'Amatic',
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    )
+                  ],
+                ))
           ]),
           Column(children: [
             Container(

@@ -1,27 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:satu_app/datajson.dart';
 import 'package:satu_app/menu.dart';
 
-class Devices extends StatefulWidget {
+class Devices extends StatelessWidget {
   @override
-  DevicesState createState() => DevicesState();
-}
-
-class DevicesState extends State<Devices> {
-  var _listAppareils = ['Saturometre', 'Saturometre2'];
-
-  Widget _DevicesListView(BuildContext context) {
-    return ListView.separated(
-        itemCount: _listAppareils.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(_listAppareils[index]),
-          );
-        },
-        separatorBuilder: (context, index) {
-          return Divider();
-        });
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -38,6 +20,43 @@ class DevicesState extends State<Devices> {
             ),
           ),
         ),
-        body: _DevicesListView(context));
+        body: Center(
+          child: FutureBuilder<List>(
+              future: fetchjson(),
+              builder: (context, snapshot) {
+                switch (snapshot.connectionState) {
+                  case ConnectionState.waiting:
+                    return Center(child: CircularProgressIndicator());
+                  default:
+                    if (snapshot.hasError) {
+                      return Text('Error');
+                    } else {
+                      var items = snapshot.data as List<ListDevices>;
+                      return DevList(
+                        listAppareils: items,
+                      );
+                    }
+                }
+              }),
+        ));
+  }
+}
+
+class DevList extends StatelessWidget {
+  final List<ListDevices> listAppareils;
+
+  DevList({Key? key, required this.listAppareils}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+        itemCount: listAppareils == null ? 0 : listAppareils.length,
+        itemBuilder: (context, int index) {
+          return ListTile(
+            title: Text(listAppareils[index].name),
+          );
+        },
+        separatorBuilder: (context, index) {
+          return Divider();
+        });
   }
 }

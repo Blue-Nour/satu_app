@@ -18,10 +18,10 @@ class ListDevices {
 
   factory ListDevices.fromJson(Map<String, dynamic> json) {
     return ListDevices(
-        id: json['devices']['id'] as int,
-        name: json['devices']['name'] as String,
-        category: json['devices']['category'] as String,
-        ip: json['devices']['ip'] as String);
+        id: json['id'] as int,
+        name: json['name'] as String,
+        category: json['category'] as String,
+        ip: json['ip'] as String);
   }
 }
 
