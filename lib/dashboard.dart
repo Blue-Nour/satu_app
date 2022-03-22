@@ -56,28 +56,37 @@ class DashboardState extends State<Dashboard> {
                 child: Text(sprintf("%04.1f %", [_instValue]),
                     style:
                         TextStyle(fontSize: 50, fontWeight: FontWeight.bold))),
-            Container(
-              //Container bouton vlaidation prchaine valeur
-              margin: const EdgeInsets.only(bottom: 30, right: 30, left: 80),
-              padding: const EdgeInsets.all(5.0),
-              decoration: BoxDecoration(
-                color: Colors.blueAccent,
-                border: Border.all(color: Colors.blueAccent),
-                borderRadius: BorderRadius.all(Radius.circular(13)),
-              ),
-              width: 170, //MediaQuery.of(context).size.height * 0.50,
-              height: 50,
-              child: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Passer à la prochaine valeur",
-                  style: TextStyle(
-                      fontSize: 10,
-                      fontFamily: 'Amatic',
-                      fontWeight: FontWeight.bold),
+            GestureDetector(
+                child: Container(
+                  //Container bouton vlaidation prchaine valeur
+                  margin:
+                      const EdgeInsets.only(bottom: 30, right: 30, left: 80),
+                  padding: const EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                    color: Colors.blueAccent,
+                    border: Border.all(color: Colors.blueAccent),
+                    borderRadius: BorderRadius.all(Radius.circular(13)),
+                  ),
+                  width: 170, //MediaQuery.of(context).size.height * 0.50,
+                  height: 50,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Passer à la prochaine valeur",
+                      style: TextStyle(
+                          fontSize: 10,
+                          fontFamily: 'Amatic',
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
-              ),
-            ),
+                onTap: () {
+                  setState(
+                    () {
+                      _instValue = _nextValue;
+                    },
+                  );
+                })
           ]),
           Column(children: [
             //2eme colonne : prochaine val
@@ -108,48 +117,64 @@ class DashboardState extends State<Dashboard> {
                 padding: const EdgeInsets.all(5.0),
                 child: Row(
                   children: [
-                    Container(
-                      //Bouton +1
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        color: Colors.blueAccent,
-                        border: Border.all(color: Colors.blueAccent),
-                        borderRadius: BorderRadius.all(Radius.circular(30)),
-                      ),
-                      width: MediaQuery.of(context).size.height * 0.05,
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "+1",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontFamily: 'Amatic',
-                              fontWeight: FontWeight.bold),
+                    GestureDetector(
+                        child: Container(
+                          //Bouton +1
+                          margin: const EdgeInsets.only(right: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.blueAccent,
+                            border: Border.all(color: Colors.blueAccent),
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          width: MediaQuery.of(context).size.height * 0.05,
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "+1",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: 'Amatic',
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    Container(
-                      //Bouton -1
-                      margin: const EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(
-                        color: Colors.blueAccent,
-                        border: Border.all(color: Colors.blueAccent),
-                        borderRadius: BorderRadius.all(Radius.circular(30)),
-                      ),
-                      width: MediaQuery.of(context).size.height * 0.05,
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "-1",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontFamily: 'Amatic',
-                              fontWeight: FontWeight.bold),
+                        onTap: () {
+                          setState(
+                            () {
+                              _nextValue++;
+                            },
+                          );
+                        }),
+                    GestureDetector(
+                        child: Container(
+                          //Bouton -1
+                          margin: const EdgeInsets.only(left: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.blueAccent,
+                            border: Border.all(color: Colors.blueAccent),
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          width: MediaQuery.of(context).size.height * 0.05,
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "-1",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: 'Amatic',
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
                         ),
-                      ),
-                    )
+                        onTap: () {
+                          setState(
+                            () {
+                              _nextValue--;
+                            },
+                          );
+                        })
                   ],
                 ))
           ])
